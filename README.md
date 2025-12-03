@@ -151,6 +151,8 @@ choco install openjdk && choco install maven
 
 ## Testing the Component with Docker
 
+### Method 1: Using Keycloakify CLI (Original)
+
 Run this command:
 
 ```bash
@@ -161,6 +163,82 @@ npx keycloakify start-keycloak
 
 ```bash
 npx keycloakify start-keycloak --keycloak-version 25.0.2
+```
+
+### Method 2: Using Docker (New)
+
+#### Quick Start with Docker
+
+**Windows (PowerShell):**
+
+```powershell
+.\build-and-run.ps1
+```
+
+**Linux/macOS (Bash):**
+
+```bash
+chmod +x build-and-run.sh
+./build-and-run.sh
+```
+
+#### Manual Docker Commands
+
+Build the Docker image:
+
+```bash
+docker build -t keycloak-gotrust-theme .
+```
+
+Run the container:
+
+```bash
+docker run -d \
+  --name keycloak-keycloakify \
+  -p 8080:8080 \
+  -e KEYCLOAK_ADMIN=admin \
+  -e KEYCLOAK_ADMIN_PASSWORD=admin \
+  keycloak-gotrust-theme
+```
+
+#### Using Docker Compose
+
+```bash
+docker-compose up -d
+```
+
+To rebuild and restart:
+
+```bash
+docker-compose up -d --build
+```
+
+#### Access Your Theme
+
+-   **Keycloak Admin Console**: http://localhost:8080
+-   **Username**: admin
+-   **Password**: admin
+
+Your custom GoTrust theme will be available in the realm settings under "Themes".
+
+#### Docker Management
+
+View container logs:
+
+```bash
+docker logs -f keycloak-keycloakify
+```
+
+Stop the container:
+
+```bash
+docker stop keycloak-keycloakify
+```
+
+Remove the container:
+
+```bash
+docker rm keycloak-keycloakify
 ```
 
 ## 📦 Building the Keycloak Theme

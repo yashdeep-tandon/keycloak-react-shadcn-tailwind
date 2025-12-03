@@ -1,0 +1,81 @@
+{
+    "realm": "myrealm",
+    "enabled": true,
+    "displayName": "My Realm",
+    "loginTheme": "gotrust-theme",
+    "accountTheme": "gotrust-theme",
+    "users": [
+        {
+            "username": "testuser",
+            "enabled": true,
+            "email": "test@example.com",
+            "credentials": [
+                {
+                    "type": "password",
+                    "value": "password123",
+                    "temporary": false
+                }
+            ]
+        }
+    ],
+    "clients": [
+        {
+            "clientId": "account",
+            "name": "account",
+            "enabled": true,
+            "alwaysDisplayInConsole": false,
+            "publicClient": true,
+            "frontchannelLogout": false,
+            "protocol": "openid-connect",
+            "fullScopeAllowed": false,
+            "nodeReRegistrationTimeout": -1,
+            "defaultClientScopes": ["web-origins", "acr", "profile", "roles", "email"],
+            "optionalClientScopes": [
+                "address",
+                "phone",
+                "offline_access",
+                "microprofile-jwt"
+            ],
+            "access": {
+                "view": true,
+                "configure": true,
+                "manage": true
+            },
+            "redirectUris": ["/realms/myrealm/account/*"],
+            "webOrigins": ["+"]
+        },
+        {
+            "clientId": "account-console",
+            "name": "account-console",
+            "enabled": true,
+            "alwaysDisplayInConsole": false,
+            "publicClient": true,
+            "frontchannelLogout": false,
+            "protocol": "openid-connect",
+            "fullScopeAllowed": false,
+            "nodeReRegistrationTimeout": -1,
+            "protocolMappers": [
+                {
+                    "name": "audience resolve",
+                    "protocol": "openid-connect",
+                    "protocolMapper": "oidc-audience-resolve-mapper",
+                    "config": {}
+                }
+            ],
+            "defaultClientScopes": ["web-origins", "acr", "profile", "roles", "email"],
+            "optionalClientScopes": [
+                "address",
+                "phone",
+                "offline_access",
+                "microprofile-jwt"
+            ],
+            "access": {
+                "view": true,
+                "configure": true,
+                "manage": true
+            },
+            "redirectUris": ["/realms/myrealm/account/*"],
+            "webOrigins": ["+"]
+        }
+    ]
+}
