@@ -10,9 +10,9 @@
 
 import { lazy, Suspense, type ReactNode } from "react";
 
-export type ThemeName = "keycloakify-starter";
+export type ThemeName = "gotrust-theme";
 
-export const themeNames: ThemeName[] = ["keycloakify-starter"];
+export const themeNames: ThemeName[] = ["gotrust-theme"];
 
 export type KcEnvName = never;
 

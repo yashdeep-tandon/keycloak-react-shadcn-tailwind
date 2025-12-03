@@ -1,8 +1,8 @@
 {
-    "name": "keycloakify-starter",
+    "name": "gotrust-auth-theme",
     "version": "0.0.0",
-    "description": "Keycloakify Webpack Starter",
-    "homepage": "https://nima70.github.io/keycloakify-tailwind-shadcn/storybook/",
+    "description": "GoTrust Authentication Theme",
+    "homepage": "https://www.gotrust.tech/",
     "repository": {
         "type": "git",
         "url": "git://github.com/keycloakify/keycloakify-starter-webpack.git"
@@ -23,7 +23,8 @@
         "accountThemeImplementation": "none",
         "projectBuildDirPath": "build",
         "staticDirPathInProjectBuildDirPath": "static",
-        "publicDirPath": "public"
+        "publicDirPath": "public",
+        "themeName": "gotrust-theme"
     },
     "license": "MIT",
     "keywords": [],
