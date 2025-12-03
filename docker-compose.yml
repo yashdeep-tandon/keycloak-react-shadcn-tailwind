@@ -46,7 +46,7 @@ services:
         # Mount your realm export from the project root.
         # Put your exported JSON as realm-config.json there.
         volumes:
-            - ./realm-config.json:/opt/keycloak/data/import/realm-config.json
+            - ./realm-export.json:/opt/keycloak/data/import/realm-export.json
 
 volumes:
     postgres_data:
