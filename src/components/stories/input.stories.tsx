@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Input, InputProps } from "../ui/input";
 
 // Define metadata for the Input component

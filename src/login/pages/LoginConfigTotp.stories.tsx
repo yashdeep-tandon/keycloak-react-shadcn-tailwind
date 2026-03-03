@@ -1,5 +1,5 @@
 // TODO: TO Contribute to the main repo
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { createKcPageStory } from "../KcPageStory";
 
 const { KcPageStory } = createKcPageStory({ pageId: "login-config-totp.ftl" });

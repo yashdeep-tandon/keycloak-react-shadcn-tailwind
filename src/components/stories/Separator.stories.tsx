@@ -1,7 +1,7 @@
 // Separator.stories.tsx
 
 import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Separator } from "../ui/separator"; // Adjust the import based on your project structure
 
 // Meta object

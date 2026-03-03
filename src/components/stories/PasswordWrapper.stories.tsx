@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { PasswordWrapper } from "../ui/PasswordWrapper";
 import { Button } from "../ui/button";
 import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";

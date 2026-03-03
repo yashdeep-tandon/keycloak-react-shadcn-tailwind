@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { SocialProviders, SocialProvidersProps } from "../ui/SocialProviders"; // Adjust the path based on your directory structure
 
 const meta: Meta<typeof SocialProviders> = {

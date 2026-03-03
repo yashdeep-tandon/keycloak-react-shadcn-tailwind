@@ -1,6 +1,6 @@
 import { Checkbox } from "../ui/checkbox";
 
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-webpack5";
 import React, { useState } from "react";
 import { CheckedState } from "@radix-ui/react-checkbox";
 

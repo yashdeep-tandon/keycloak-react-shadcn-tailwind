@@ -1,5 +1,5 @@
 // src/components/Button.stories.tsx
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Button, ButtonProps } from "../ui/button";
 
 // Define metadata for Storybook

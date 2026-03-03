@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { createKcPageStory } from "../KcPageStory";
 
 const { KcPageStory } = createKcPageStory({ pageId: "login-x509-info.ftl" });
@@ -76,7 +76,7 @@ export const CertificateAndEnabledUser: Story = {
     )
 };
 
-// import type { Meta, StoryObj } from "@storybook/react";
+// import type { Meta, StoryObj } from "@storybook/react-webpack5";
 // import { createKcPageStory } from "../KcPageStory";
 
 // const { KcPageStory } = createKcPageStory({ pageId: "login-x509-info.ftl" });

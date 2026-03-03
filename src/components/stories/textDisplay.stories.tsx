@@ -1,5 +1,5 @@
 // stories/TextDisplay.stories.tsx
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-webpack5";
 import { TextDisplay } from "../ui/TextDisplay";
 
 const meta: Meta<typeof TextDisplay> = {

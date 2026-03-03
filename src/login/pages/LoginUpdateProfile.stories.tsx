@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { createKcPageStory } from "../KcPageStory";
 
 // Create KcPageStory for the "login-update-profile.ftl" page

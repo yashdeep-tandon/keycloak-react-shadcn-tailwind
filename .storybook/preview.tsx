@@ -1,8 +1,8 @@
 import React from "react"; // Add this import at the top
-import type { Preview } from "@storybook/react";
-import { themes } from "@storybook/theming";
+import type { Preview } from "@storybook/react-webpack5";
+import { themes } from "storybook/theming";
 import { ModeDecorator } from "./modeDecorator";
-import { MINIMAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { MINIMAL_VIEWPORTS } from "storybook/viewport";
 import "./../src/styles/global.css";
 import { Provider } from "react-redux";
 
@@ -16,8 +16,14 @@ const preview: Preview = {
             }
         },
         viewport: {
-            viewports: MINIMAL_VIEWPORTS,
-            defaultViewport: "ipad"
+            options: MINIMAL_VIEWPORTS
+        }
+    },
+
+    initialGlobals: {
+        viewport: {
+            value: "ipad",
+            isRotated: false
         }
     }
 };

@@ -48,23 +48,31 @@
         "tailwindcss-animate": "^1.0.7"
     },
     "devDependencies": {
-        "@storybook/addon-essentials": "^8.2.9",
-        "@storybook/blocks": "^8.1.9",
-        "@storybook/preset-create-react-app": "^8.1.9",
-        "@storybook/react": "^8.1.9",
-        "@storybook/react-webpack5": "^8.1.9",
-        "@storybook/test": "^8.1.9",
+        "@storybook/addon-docs": "^10.2.14",
+        "@storybook/addon-links": "^10.2.14",
+        "@storybook/preset-create-react-app": "^10.2.14",
+        "@storybook/react": "^10.2.14",
+        "@storybook/react-webpack5": "^10.2.14",
         "@tailwindcss/typography": "^0.5.15",
         "@types/react": "^18.2.43",
         "@types/react-dom": "^18.2.17",
-        "eslint-plugin-storybook": "^0.8.0",
+        "eslint-plugin-storybook": "^10.2.14",
         "prettier": "3.3.1",
         "prop-types": "^15.8.1",
         "react-scripts": "5.0.1",
         "rimraf": "^5.0.5",
-        "storybook": "^8.1.9",
+        "storybook": "^10.2.14",
         "typescript": "~5.1.6",
-        "webpack": "^5.92.0"
+        "webpack": "^5.92.0",
+        "ajv": "^8.12.0"
+    },
+    "overrides": {
+        "nth-check": "^2.1.1",
+        "postcss": "^8.4.31",
+        "serialize-javascript": "^7.0.3",
+        "jsonpath": "npm:jsonpath-plus@^10.2.0",
+        "bfj": "^8.0.0",
+        "webpack-dev-server": "^5.2.1"
     },
     "eslintConfig": {
         "extends": [
