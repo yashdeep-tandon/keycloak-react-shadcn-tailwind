@@ -403,6 +403,68 @@ body {
         }
     }
 
+    @keyframes aurora-1 {
+        0%,
+        100% {
+            transform: translate(0, 0) scale(1) rotate(0deg);
+            opacity: 0.4;
+        }
+        25% {
+            transform: translate(10%, -15%) scale(1.1) rotate(45deg);
+            opacity: 0.6;
+        }
+        50% {
+            transform: translate(-5%, 10%) scale(0.95) rotate(90deg);
+            opacity: 0.35;
+        }
+        75% {
+            transform: translate(15%, 5%) scale(1.05) rotate(135deg);
+            opacity: 0.55;
+        }
+    }
+
+    @keyframes aurora-2 {
+        0%,
+        100% {
+            transform: translate(0, 0) scale(1) rotate(0deg);
+            opacity: 0.3;
+        }
+        33% {
+            transform: translate(-15%, 10%) scale(1.15) rotate(-60deg);
+            opacity: 0.5;
+        }
+        66% {
+            transform: translate(10%, -10%) scale(0.9) rotate(-120deg);
+            opacity: 0.4;
+        }
+    }
+
+    @keyframes aurora-3 {
+        0%,
+        100% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0.25;
+        }
+        50% {
+            transform: translate(-10%, -10%) scale(1.2);
+            opacity: 0.5;
+        }
+    }
+
+    @keyframes shimmer {
+        0% {
+            opacity: 0;
+            transform: translateX(-100%) rotate(25deg);
+        }
+        50% {
+            opacity: 0.05;
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(100%) rotate(25deg);
+        }
+    }
+
     .animated-gradient {
         background: var(--gradient-animated);
         background-size: 400% 400%;
@@ -410,9 +472,107 @@ body {
     }
 
     .onboarding-gradient {
-        background: var(--gradient-onboarding);
-        background-size: 400% 400%;
-        animation: gradient-shift 12s ease-in-out infinite;
+        position: relative;
+        background: linear-gradient(
+            135deg,
+            #0a1628 0%,
+            #0d1f3c 25%,
+            #0f1b4a 50%,
+            #132257 75%,
+            #0a1628 100%
+        );
+        background-size: 300% 300%;
+        animation: gradient-shift 20s ease infinite;
+        overflow: hidden;
+    }
+
+    .onboarding-gradient::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+                ellipse 80% 60% at 10% 20%,
+                rgba(23, 84, 252, 0.35) 0%,
+                transparent 60%
+            ),
+            radial-gradient(
+                ellipse 60% 70% at 80% 80%,
+                rgba(23, 84, 252, 0.25) 0%,
+                transparent 55%
+            ),
+            radial-gradient(
+                ellipse 50% 50% at 50% 50%,
+                rgba(59, 130, 246, 0.15) 0%,
+                transparent 50%
+            );
+        animation: aurora-1 15s ease-in-out infinite;
+        z-index: 0;
+    }
+
+    .onboarding-gradient::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+                ellipse 70% 50% at 70% 30%,
+                rgba(99, 102, 241, 0.2) 0%,
+                transparent 55%
+            ),
+            radial-gradient(
+                ellipse 55% 65% at 25% 75%,
+                rgba(23, 84, 252, 0.3) 0%,
+                transparent 50%
+            );
+        animation: aurora-2 18s ease-in-out infinite;
+        z-index: 0;
+    }
+
+    .onboarding-gradient > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Dark mode override for deeper, richer tones */
+    .dark .onboarding-gradient {
+        background: linear-gradient(
+            135deg,
+            #020617 0%,
+            #0c1526 25%,
+            #0b1a3a 50%,
+            #0e1e47 75%,
+            #020617 100%
+        );
+    }
+
+    .dark .onboarding-gradient::before {
+        background: radial-gradient(
+                ellipse 80% 60% at 10% 20%,
+                rgba(23, 84, 252, 0.25) 0%,
+                transparent 60%
+            ),
+            radial-gradient(
+                ellipse 60% 70% at 80% 80%,
+                rgba(23, 84, 252, 0.18) 0%,
+                transparent 55%
+            ),
+            radial-gradient(
+                ellipse 50% 50% at 50% 50%,
+                rgba(59, 130, 246, 0.1) 0%,
+                transparent 50%
+            );
+    }
+
+    .dark .onboarding-gradient::after {
+        background: radial-gradient(
+                ellipse 70% 50% at 70% 30%,
+                rgba(99, 102, 241, 0.15) 0%,
+                transparent 55%
+            ),
+            radial-gradient(
+                ellipse 55% 65% at 25% 75%,
+                rgba(23, 84, 252, 0.2) 0%,
+                transparent 50%
+            );
     }
 }
 
