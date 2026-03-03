@@ -3,7 +3,7 @@ import { KcClsx } from "keycloakify/login/lib/kcClsx";
 import { assert } from "keycloakify/tools/assert";
 import { useEffect, useReducer } from "react";
 import { Button } from "./button";
-import { EyeIcon, EyeSlashIcon } from "@heroicons/react/20/solid";
+import { Eye, EyeOff } from "lucide-react";
 export function PasswordWrapper(props: {
     kcClsx: KcClsx;
     i18n: I18n;
@@ -38,9 +38,9 @@ export function PasswordWrapper(props: {
             >
                 <div>
                     {isPasswordRevealed ? (
-                        <EyeSlashIcon className="h-5 w-5 " aria-hidden="true" />
+                        <EyeOff className="h-5 w-5 " aria-hidden="true" />
                     ) : (
-                        <EyeIcon className="h-5 w-5 " aria-hidden="true" />
+                        <Eye className="h-5 w-5 " aria-hidden="true" />
                     )}
                 </div>
             </Button>

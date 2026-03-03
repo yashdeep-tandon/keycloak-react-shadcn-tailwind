@@ -8,6 +8,7 @@ import type { I18n } from "../i18n";
 import { checkboxVariants } from "../../components/ui/checkbox";
 import { buttonVariants, Button } from "../../components/ui/button";
 import { cn } from "../../lib/utils";
+import { AlertTriangle, Printer, Download, Copy } from "lucide-react";
 
 export default function LoginRecoveryAuthnCodeConfig(props: PageProps<Extract<KcContext, { pageId: "login-recovery-authn-code-config.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -157,7 +158,7 @@ export default function LoginRecoveryAuthnCodeConfig(props: PageProps<Extract<Kc
             <div className="space-y-3">
                 <div className={clsx("pf-c-alert", "pf-m-warning", "pf-m-inline", kcClsx("kcRecoveryCodesWarning"))} aria-label="Warning alert">
                     <div className="pf-c-alert__icon">
-                        <i className="pficon-warning-triangle-o" aria-hidden="true" />
+                        <AlertTriangle className="h-5 w-5 text-yellow-600" aria-hidden="true" />
                     </div>
                     <h4 className="pf-c-alert__title">
                         <span className="pf-screen-reader">Warning alert:</span>
@@ -179,13 +180,13 @@ export default function LoginRecoveryAuthnCodeConfig(props: PageProps<Extract<Kc
                 {/* actions */}
                 <div className="responsive-container ">
                     <Button id="printRecoveryCodes" variant="secondary" size="lg" type="button" className="flex-1 px-2">
-                        <i className="pficon-print" aria-hidden="true" /> <span className="mx-2 py-2">{msg("recovery-codes-print")}</span>
+                        <Printer className="h-5 w-5" aria-hidden="true" /> <span className="mx-2 py-2">{msg("recovery-codes-print")}</span>
                     </Button>
                     <Button id="downloadRecoveryCodes" variant="secondary" size="lg" type="button" className="flex-1 px-2">
-                        <i className="pficon-save" aria-hidden="true" /> <span className="mx-2 py-2">{msg("recovery-codes-download")}</span>
+                        <Download className="h-5 w-5" aria-hidden="true" /> <span className="mx-2 py-2">{msg("recovery-codes-download")}</span>
                     </Button>
                     <Button id="copyRecoveryCodes" variant="secondary" size="lg" type="button" className="flex-1 px-2">
-                        <i className="pficon-blueprint" aria-hidden="true" /> <span className="mx-2 py-2">{msg("recovery-codes-copy")}</span>
+                        <Copy className="h-5 w-5" aria-hidden="true" /> <span className="mx-2 py-2">{msg("recovery-codes-copy")}</span>
                     </Button>
                 </div>
 

@@ -1,6 +1,9 @@
 import React from "react";
 import { clsx } from "keycloakify/tools/clsx";
 
+// Note: Using Font Awesome icons from iconClasses for social providers
+// since Lucide React removed brand icons to avoid trademark issues
+
 export interface SocialProvidersProps {
     social: {
         providers?: Array<{

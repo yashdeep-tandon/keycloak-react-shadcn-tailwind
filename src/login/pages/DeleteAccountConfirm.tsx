@@ -5,6 +5,7 @@ import type { I18n } from "../i18n";
 import { Input } from "../../components/ui/input";
 import { Button, buttonVariants } from "../../components/ui/button";
 import { cn } from "../../lib/utils";
+import { AlertTriangle } from "lucide-react";
 export default function DeleteAccountConfirm(props: PageProps<Extract<KcContext, { pageId: "delete-account-confirm.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
@@ -21,7 +22,7 @@ export default function DeleteAccountConfirm(props: PageProps<Extract<KcContext,
         <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={doUseDefaultCss} classes={classes} headerNode={msg("deleteAccountConfirm")}>
             <form action={url.loginAction} className="form-vertical" method="post">
                 <div className="alert alert-warning" style={{ marginTop: "0", marginBottom: "30px" }}>
-                    <span className="pficon pficon-warning-triangle-o"></span>
+                    <AlertTriangle className="h-5 w-5 text-yellow-600 inline-block mr-2" />
                     {msg("irreversibleAction")}
                 </div>
                 <p>{msg("deletingImplies")}</p>

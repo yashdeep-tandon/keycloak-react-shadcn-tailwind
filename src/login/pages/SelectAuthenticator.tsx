@@ -4,7 +4,7 @@ import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button } from "../../components/ui/button";
 import { cn } from "../../lib/utils";
-import { ChevronRightIcon } from "@heroicons/react/20/solid";
+import { ChevronRight } from "lucide-react";
 export default function SelectAuthenticator(props: PageProps<Extract<KcContext, { pageId: "select-authenticator.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
     const { url, auth } = kcContext;
@@ -47,7 +47,7 @@ export default function SelectAuthenticator(props: PageProps<Extract<KcContext, 
                             </div>
 
                             <div className="flex items-center justify-center w-full h-full  py-5 ">
-                                <ChevronRightIcon className={cn("w-5 h-5", kcClsx("kcSelectAuthListItemArrowIconClass"))} />
+                                <ChevronRight className={cn("w-5 h-5", kcClsx("kcSelectAuthListItemArrowIconClass"))} />
                             </div>
                         </Button>
                     ))}

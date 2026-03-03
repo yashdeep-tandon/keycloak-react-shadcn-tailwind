@@ -8,6 +8,7 @@ import type { I18n } from "../i18n";
 import { buttonVariants, Button } from "../../components/ui/button";
 import { cn } from "../../lib/utils";
 import { checkboxVariants } from "../../components/ui/checkbox";
+import { Key } from "lucide-react";
 
 export default function WebauthnRegister(props: PageProps<Extract<KcContext, { pageId: "webauthn-register.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -56,18 +57,18 @@ export default function WebauthnRegister(props: PageProps<Extract<KcContext, { p
                         $("#register").submit();
                         return;
                     }
-    
+
                     // mandatory parameters
                     let challenge = "${challenge}";
                     let userid = "${userid}";
                     let username = "${username}";
-    
+
                     let signatureAlgorithms =${JSON.stringify(signatureAlgorithms)};
                     let pubKeyCredParams = getPubKeyCredParams(signatureAlgorithms);
-    
+
                     let rpEntityName = "${rpEntityName}";
                     let rp = {name: rpEntityName};
-    
+
                     let publicKey = {
                         challenge: base64url.decode(challenge, {loose: true}),
                         rp: rp,
@@ -78,23 +79,23 @@ export default function WebauthnRegister(props: PageProps<Extract<KcContext, { p
                         },
                         pubKeyCredParams: pubKeyCredParams,
                     };
-    
+
                     // optional parameters
                     let rpId = "${rpId}";
                     publicKey.rp.id = rpId;
-    
+
                     let attestationConveyancePreference = "${attestationConveyancePreference}";
                     if (attestationConveyancePreference !== 'not specified') publicKey.attestation = attestationConveyancePreference;
-    
+
                     let authenticatorSelection = {};
                     let isAuthenticatorSelectionSpecified = false;
-    
+
                     let authenticatorAttachment = "${authenticatorAttachment}";
                     if (authenticatorAttachment !== 'not specified') {
                         authenticatorSelection.authenticatorAttachment = authenticatorAttachment;
                         isAuthenticatorSelectionSpecified = true;
                     }
-    
+
                     let requireResidentKey = "${requireResidentKey}";
                     if (requireResidentKey !== 'not specified') {
                         if (requireResidentKey === 'Yes')
@@ -103,33 +104,33 @@ export default function WebauthnRegister(props: PageProps<Extract<KcContext, { p
                             authenticatorSelection.requireResidentKey = false;
                         isAuthenticatorSelectionSpecified = true;
                     }
-    
+
                     let userVerificationRequirement = "${userVerificationRequirement}";
                     if (userVerificationRequirement !== 'not specified') {
                         authenticatorSelection.userVerification = userVerificationRequirement;
                         isAuthenticatorSelectionSpecified = true;
                     }
-    
+
                     if (isAuthenticatorSelectionSpecified) publicKey.authenticatorSelection = authenticatorSelection;
-    
+
                     let createTimeout = ${createTimeout};
                     if (createTimeout !== 0) publicKey.timeout = createTimeout * 1000;
-    
+
                     let excludeCredentialIds = "${excludeCredentialIds}";
                     let excludeCredentials = getExcludeCredentials(excludeCredentialIds);
                     if (excludeCredentials.length > 0) publicKey.excludeCredentials = excludeCredentials;
-    
+
                     navigator.credentials.create({publicKey})
                         .then(function (result) {
                             window.result = result;
                             let clientDataJSON = result.response.clientDataJSON;
                             let attestationObject = result.response.attestationObject;
                             let publicKeyCredentialId = result.rawId;
-    
+
                             $("#clientDataJSON").val(base64url.encode(new Uint8Array(clientDataJSON), {pad: false}));
                             $("#attestationObject").val(base64url.encode(new Uint8Array(attestationObject), {pad: false}));
                             $("#publicKeyCredentialId").val(base64url.encode(new Uint8Array(publicKeyCredentialId), {pad: false}));
-    
+
                             if (typeof result.response.getTransports === "function") {
                                 let transports = result.response.getTransports();
                                 if (transports) {
@@ -138,29 +139,29 @@ export default function WebauthnRegister(props: PageProps<Extract<KcContext, { p
                             } else {
                                 console.log("Your browser is not able to recognize supported transport media for the authenticator.");
                             }
-    
+
                             let initLabel = "WebAuthn Authenticator (Default Label)";
                             let labelResult = window.prompt("Please input your registered authenticator's label", initLabel);
                             if (labelResult === null) labelResult = initLabel;
                             $("#authenticatorLabel").val(labelResult);
-    
+
                             $("#register").submit();
-    
+
                         })
                         .catch(function (err) {
                             $("#error").val(err);
                             $("#register").submit();
-    
+
                         });
                 }
-    
+
                 function getPubKeyCredParams(signatureAlgorithmsList) {
                     let pubKeyCredParams = [];
                     if (signatureAlgorithmsList.length === 0) {
                         pubKeyCredParams.push({type: "public-key", alg: -7});
                         return pubKeyCredParams;
                     }
-    
+
                     for (let i = 0; i < signatureAlgorithmsList.length; i++) {
                         pubKeyCredParams.push({
                             type: "public-key",
@@ -169,13 +170,13 @@ export default function WebauthnRegister(props: PageProps<Extract<KcContext, { p
                     }
                     return pubKeyCredParams;
                 }
-    
+
                 function getExcludeCredentials(excludeCredentialIds) {
                     let excludeCredentials = [];
                     if (excludeCredentialIds === "") return excludeCredentials;
-    
+
                     let excludeCredentialIdsList = excludeCredentialIds.split(',');
-    
+
                     for (let i = 0; i < excludeCredentialIdsList.length; i++) {
                         excludeCredentials.push({
                             type: "public-key",
@@ -185,16 +186,16 @@ export default function WebauthnRegister(props: PageProps<Extract<KcContext, { p
                     }
                     return excludeCredentials;
                 }
-    
+
                 function getTransportsAsString(transportsList) {
                     if (transportsList === '' || Array.isArray(transportsList)) return "";
-    
+
                     let transportsString = "";
-    
+
                     for (let i = 0; i < transportsList.length; i++) {
                         transportsString += transportsList[i] + ",";
                     }
-    
+
                     return transportsString.slice(0, -1);
                 }
                 `
@@ -214,7 +215,7 @@ export default function WebauthnRegister(props: PageProps<Extract<KcContext, { p
             classes={classes}
             headerNode={
                 <>
-                    <span className={kcClsx("kcWebAuthnKeyIcon")} />
+                    <Key className="h-5 w-5 inline-block mr-2" />
                     {msg("webauthn-registration-title")}
                 </>
             }
