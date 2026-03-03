@@ -7,6 +7,7 @@ import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { Button, buttonVariants } from "../../components/ui/button";
 import { checkboxVariants } from "../../components/ui/checkbox";
+import { XCircle } from "lucide-react";
 type RegisterProps = PageProps<Extract<KcContext, { pageId: "register.ftl" }>, I18n> & {
     UserProfileFormFields: LazyOrNot<(props: UserProfileFormFieldsProps) => JSX.Element>;
     doMakeUserConfirmPassword: boolean;
@@ -102,6 +103,20 @@ function TermsAcceptance(props: {
 
     return (
         <>
+            {/* Error Alert at the top */}
+            {messagesPerField.existsError("termsAccepted") && (
+                <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30 mb-4">
+                    <XCircle className="h-5 w-5 text-red-600 dark:text-red-500 flex-shrink-0 mt-0.5" />
+                    <div
+                        className="text-sm text-red-800 dark:text-red-200 flex-1"
+                        aria-live="polite"
+                        dangerouslySetInnerHTML={{
+                            __html: messagesPerField.get("termsAccepted")
+                        }}
+                    />
+                </div>
+            )}
+
             <div className="form-group">
                 <div className={kcClsx("kcInputWrapperClass")}>
                     {msg("termsTitle")}
@@ -115,7 +130,11 @@ function TermsAcceptance(props: {
                             type="checkbox"
                             id="termsAccepted"
                             name="termsAccepted"
-                            className={checkboxVariants({})}
+                            className={
+                                messagesPerField.existsError("termsAccepted")
+                                    ? `${checkboxVariants({})} border-red-500 focus-visible:ring-red-500`
+                                    : checkboxVariants({})
+                            }
                             checked={areTermsAccepted}
                             onChange={e => onAreTermsAcceptedValueChange(e.target.checked)}
                             aria-invalid={messagesPerField.existsError("termsAccepted")}
@@ -125,18 +144,6 @@ function TermsAcceptance(props: {
                         </label>
                     </div>
                 </div>
-                {messagesPerField.existsError("termsAccepted") && (
-                    <div className={kcClsx("kcLabelWrapperClass")}>
-                        <span
-                            id="input-error-terms-accepted"
-                            className={kcClsx("kcInputErrorMessageClass")}
-                            aria-live="polite"
-                            dangerouslySetInnerHTML={{
-                                __html: messagesPerField.get("termsAccepted")
-                            }}
-                        />
-                    </div>
-                )}
             </div>
         </>
     );

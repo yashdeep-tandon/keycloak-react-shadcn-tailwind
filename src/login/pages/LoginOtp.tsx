@@ -6,6 +6,7 @@ import type { I18n } from "../i18n";
 import { buttonVariants } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import clsx from "clsx";
+import { XCircle } from "lucide-react";
 
 export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "login-otp.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -29,6 +30,20 @@ export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "
             headerNode={msg("doLogIn")}
         >
             <form id="kc-otp-login-form" className={kcClsx("kcFormClass")} action={url.loginAction} method="post">
+                {/* Error Alert at the top */}
+                {messagesPerField.existsError("totp") && (
+                    <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30 mb-4">
+                        <XCircle className="h-5 w-5 text-red-600 dark:text-red-500 flex-shrink-0 mt-0.5" />
+                        <div
+                            className="text-sm text-red-800 dark:text-red-200 flex-1"
+                            aria-live="polite"
+                            dangerouslySetInnerHTML={{
+                                __html: messagesPerField.get("totp")
+                            }}
+                        />
+                    </div>
+                )}
+
                 {otpLogin.userOtpCredentials.length > 1 && (
                     <div>
                         <div>
@@ -75,21 +90,10 @@ export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "
                             name="otp"
                             autoComplete="off"
                             type="text"
-                            className="mt-2"
-                            // className={kcClsx("kcInputClass")}
+                            className={messagesPerField.existsError("totp") ? "mt-2 border-red-500 focus-visible:ring-red-500" : "mt-2"}
                             autoFocus
                             aria-invalid={messagesPerField.existsError("totp")}
                         />
-                        {messagesPerField.existsError("totp") && (
-                            <span
-                                id="input-error-otp-code"
-                                className={kcClsx("kcInputErrorMessageClass")}
-                                aria-live="polite"
-                                dangerouslySetInnerHTML={{
-                                    __html: messagesPerField.get("totp")
-                                }}
-                            />
-                        )}
                     </div>
                 </div>
 

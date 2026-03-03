@@ -32,17 +32,17 @@ export function PasswordWrapper(props: {
             {children}
             <Button
                 type="button"
+                variant="ghost"
+                size="icon"
                 aria-label={msgStr(isPasswordRevealed ? "hidePassword" : "showPassword")}
                 aria-controls={passwordInputId}
                 onClick={toggleIsPasswordRevealed}
             >
-                <div>
-                    {isPasswordRevealed ? (
-                        <EyeOff className="h-5 w-5 " aria-hidden="true" />
-                    ) : (
-                        <Eye className="h-5 w-5 " aria-hidden="true" />
-                    )}
-                </div>
+                {isPasswordRevealed ? (
+                    <EyeOff className="h-5 w-5 " aria-hidden="true" />
+                ) : (
+                    <Eye className="h-5 w-5 " aria-hidden="true" />
+                )}
             </Button>
         </div>
     );

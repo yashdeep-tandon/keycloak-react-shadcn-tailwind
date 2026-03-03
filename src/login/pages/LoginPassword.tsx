@@ -9,6 +9,7 @@ import { PasswordWrapper } from "../../components/ui/PasswordWrapper";
 import { buttonVariants } from "../../components/ui/button";
 import { cn } from "../../lib/utils";
 import { Input } from "../../components/ui/input";
+import { XCircle } from "lucide-react";
 export default function LoginPassword(props: PageProps<Extract<KcContext, { pageId: "login-password.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
@@ -43,6 +44,20 @@ export default function LoginPassword(props: PageProps<Extract<KcContext, { page
                         action={url.loginAction}
                         method="post"
                     >
+                        {/* Error Alert at the top */}
+                        {messagesPerField.existsError("password") && (
+                            <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30">
+                                <XCircle className="h-5 w-5 text-red-600 dark:text-red-500 flex-shrink-0 mt-0.5" />
+                                <div
+                                    className="text-sm text-red-800 dark:text-red-200 flex-1"
+                                    aria-live="polite"
+                                    dangerouslySetInnerHTML={{
+                                        __html: messagesPerField.get("password")
+                                    }}
+                                />
+                            </div>
+                        )}
+
                         <div className={cn()}>
                             {/* <hr /> */}
                             <label htmlFor="password" className={cn()}>
@@ -57,20 +72,10 @@ export default function LoginPassword(props: PageProps<Extract<KcContext, { page
                                     type="password"
                                     autoFocus
                                     autoComplete="on"
+                                    className={messagesPerField.existsError("password") ? "border-red-500 focus-visible:ring-red-500" : ""}
                                     aria-invalid={messagesPerField.existsError("username", "password")}
                                 />
                             </PasswordWrapper>
-
-                            {messagesPerField.existsError("password") && (
-                                <span
-                                    id="input-error-password"
-                                    className={kcClsx("kcInputErrorMessageClass")}
-                                    aria-live="polite"
-                                    dangerouslySetInnerHTML={{
-                                        __html: messagesPerField.get("password")
-                                    }}
-                                />
-                            )}
                         </div>
                         <div className={kcClsx("kcFormGroupClass", "kcFormSettingClass")}>
                             <div id="kc-form-options" />

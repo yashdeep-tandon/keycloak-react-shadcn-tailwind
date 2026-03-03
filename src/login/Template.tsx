@@ -162,12 +162,12 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center prose dark:prose-invert max-w-none onboarding-gradient">
             {/* Centered Keycloak card */}
-            <div className="flex flex-col items-center w-full max-w-xl px-4">
+            <div className="flex flex-col items-center w-full max-w-[33rem] px-4">
                 <div className="flex justify-center mb-6">
                     <img src={`${url.resourcesPath}/GoTrustLogo_Dark.svg`} alt="GoTrust" className="h-16 object-contain" />
                 </div>
 
-                <Card className="py-0 px-3 w-full shadow-[0_10px_40px_rgba(0,0,0,0.15)]">
+                <Card className="py-0 px-3 w-full shadow-[0_20px_50px_-10px_rgba(255,255,255,0.5)]">
                     <CardContent className="space-y-8 pb-5">
                         <div className="flex justify-end space-x-4 pt-2">
                             {languageSelector()}

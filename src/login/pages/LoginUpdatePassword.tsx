@@ -9,6 +9,7 @@ import { Input } from "../../components/ui/input";
 import { buttonVariants, Button } from "../../components/ui/button";
 import { cn } from "../../lib/utils";
 import { checkboxVariants } from "../../components/ui/checkbox";
+import { XCircle } from "lucide-react";
 export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, { pageId: "login-update-password.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
@@ -31,6 +32,20 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
             headerNode={msg("updatePasswordTitle")}
         >
             <form id="kc-passwd-update-form" action={url.loginAction} method="post" className="flex flex-col">
+                {/* Error Alert at the top */}
+                {messagesPerField.existsError("password", "password-confirm") && (
+                    <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30 mb-4">
+                        <XCircle className="h-5 w-5 text-red-600 dark:text-red-500 flex-shrink-0 mt-0.5" />
+                        <div
+                            className="text-sm text-red-800 dark:text-red-200 flex-1"
+                            aria-live="polite"
+                            dangerouslySetInnerHTML={{
+                                __html: messagesPerField.getFirstError("password", "password-confirm")
+                            }}
+                        />
+                    </div>
+                )}
+
                 <div className={kcClsx("kcFormGroupClass")}>
                     <div className={kcClsx("kcLabelWrapperClass")}>
                         <label htmlFor="password-new" className={kcClsx("kcLabelClass")}>
@@ -45,20 +60,10 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                                 name="password-new"
                                 autoFocus
                                 autoComplete="new-password"
+                                className={messagesPerField.existsError("password") ? "border-red-500 focus-visible:ring-red-500" : ""}
                                 aria-invalid={messagesPerField.existsError("password", "password-confirm")}
                             />
                         </PasswordWrapper>
-
-                        {messagesPerField.existsError("password") && (
-                            <span
-                                id="input-error-password"
-                                className={kcClsx("kcInputErrorMessageClass")}
-                                aria-live="polite"
-                                dangerouslySetInnerHTML={{
-                                    __html: messagesPerField.get("password")
-                                }}
-                            />
-                        )}
                     </div>
                 </div>
 
@@ -76,20 +81,10 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                                 name="password-confirm"
                                 autoFocus
                                 autoComplete="new-password"
+                                className={messagesPerField.existsError("password-confirm") ? "border-red-500 focus-visible:ring-red-500" : ""}
                                 aria-invalid={messagesPerField.existsError("password", "password-confirm")}
                             />
                         </PasswordWrapper>
-
-                        {messagesPerField.existsError("password-confirm") && (
-                            <span
-                                id="input-error-password-confirm"
-                                className={kcClsx("kcInputErrorMessageClass")}
-                                aria-live="polite"
-                                dangerouslySetInnerHTML={{
-                                    __html: messagesPerField.get("password-confirm")
-                                }}
-                            />
-                        )}
                     </div>
                 </div>
 

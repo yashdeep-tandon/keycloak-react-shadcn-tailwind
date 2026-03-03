@@ -6,6 +6,7 @@ import { Button, buttonVariants } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { TextDisplay } from "../../components/ui/TextDisplay";
 import { checkboxVariants } from "../../components/ui/checkbox";
+import { XCircle } from "lucide-react";
 export default function LoginConfigTotp(props: PageProps<Extract<KcContext, { pageId: "login-config-totp.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
@@ -99,6 +100,20 @@ export default function LoginConfigTotp(props: PageProps<Extract<KcContext, { pa
                 </ol>
 
                 <form action={url.loginAction} className={kcClsx("kcFormClass")} id="kc-totp-settings-form" method="post">
+                    {/* Error Alert at the top */}
+                    {messagesPerField.existsError("totp", "userLabel") && (
+                        <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30 mb-4">
+                            <XCircle className="h-5 w-5 text-red-600 dark:text-red-500 flex-shrink-0 mt-0.5" />
+                            <div
+                                className="text-sm text-red-800 dark:text-red-200 flex-1"
+                                aria-live="polite"
+                                dangerouslySetInnerHTML={{
+                                    __html: messagesPerField.getFirstError("totp", "userLabel")
+                                }}
+                            />
+                        </div>
+                    )}
+
                     <div className={kcClsx("kcFormGroupClass")}>
                         <div className={kcClsx("kcInputWrapperClass")}>
                             <label htmlFor="totp" className={kcClsx("kcLabelClass")}>
@@ -112,20 +127,9 @@ export default function LoginConfigTotp(props: PageProps<Extract<KcContext, { pa
                                 id="totp"
                                 name="totp"
                                 autoComplete="off"
-                                // className={kcClsx("kcInputClass")}
+                                className={messagesPerField.existsError("totp") ? "border-red-500 focus-visible:ring-red-500" : ""}
                                 aria-invalid={messagesPerField.existsError("totp")}
                             />
-
-                            {messagesPerField.existsError("totp") && (
-                                <span
-                                    id="input-error-otp-code"
-                                    className={kcClsx("kcInputErrorMessageClass")}
-                                    aria-live="polite"
-                                    dangerouslySetInnerHTML={{
-                                        __html: messagesPerField.get("totp")
-                                    }}
-                                />
-                            )}
                         </div>
                         <Input type="hidden" id="totpSecret" name="totpSecret" value={totp.totpSecret} />
                         {mode && <input type="hidden" id="mode" value={mode} />}
@@ -144,19 +148,11 @@ export default function LoginConfigTotp(props: PageProps<Extract<KcContext, { pa
                                 id="userLabel"
                                 name="userLabel"
                                 autoComplete="off"
-                                className={kcClsx("kcInputClass")}
+                                className={
+                                    messagesPerField.existsError("userLabel") ? "border-red-500 focus-visible:ring-red-500" : kcClsx("kcInputClass")
+                                }
                                 aria-invalid={messagesPerField.existsError("userLabel")}
                             />
-                            {messagesPerField.existsError("userLabel") && (
-                                <span
-                                    id="input-error-otp-label"
-                                    className={kcClsx("kcInputErrorMessageClass")}
-                                    aria-live="polite"
-                                    dangerouslySetInnerHTML={{
-                                        __html: messagesPerField.get("userLabel")
-                                    }}
-                                />
-                            )}
                         </div>
                     </div>
 

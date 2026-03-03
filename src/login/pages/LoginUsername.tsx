@@ -9,6 +9,7 @@ import { buttonVariants } from "../../components/ui/button";
 import { cn } from "../../lib/utils";
 import { checkboxVariants } from "../../components/ui/checkbox";
 import { SocialProviders } from "../../components/ui/SocialProviders";
+import { XCircle } from "lucide-react";
 
 export default function LoginUsername(props: PageProps<Extract<KcContext, { pageId: "login-username.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -59,6 +60,16 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                             action={url.loginAction}
                             method="post"
                         >
+                            {/* Error Alert at the top */}
+                            {messagesPerField.existsError("username") && (
+                                <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30 mb-4">
+                                    <XCircle className="h-5 w-5 text-red-600 dark:text-red-500 flex-shrink-0 mt-0.5" />
+                                    <div className="text-sm text-red-800 dark:text-red-200 flex-1" aria-live="polite">
+                                        {messagesPerField.getFirstError("username")}
+                                    </div>
+                                </div>
+                            )}
+
                             {!usernameHidden && (
                                 <div className={kcClsx("kcFormGroupClass")}>
                                     <label htmlFor="username" className={kcClsx("kcLabelClass")}>
@@ -71,19 +82,14 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                                     <Input
                                         tabIndex={2}
                                         id="username"
-                                        // className={kcClsx("kcInputClass")}
                                         name="username"
                                         defaultValue={login.username ?? ""}
                                         type="text"
                                         autoFocus
                                         autoComplete="off"
+                                        className={messagesPerField.existsError("username") ? "border-red-500 focus-visible:ring-red-500" : ""}
                                         aria-invalid={messagesPerField.existsError("username")}
                                     />
-                                    {messagesPerField.existsError("username") && (
-                                        <span id="input-error" className={kcClsx("kcInputErrorMessageClass")} aria-live="polite">
-                                            {messagesPerField.getFirstError("username")}
-                                        </span>
-                                    )}
                                 </div>
                             )}
 
