@@ -13,6 +13,7 @@ import { checkboxVariants } from "../../components/ui/checkbox";
 import { Separator } from "../../components/ui/separator";
 import { PasswordWrapper } from "../../components/ui/PasswordWrapper";
 import SocialProviders from "../../components/ui/SocialProviders";
+import { XCircle } from "lucide-react";
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
@@ -61,6 +62,20 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                             method="post"
                             className="space-y-6"
                         >
+                            {/* Error Alert at the top */}
+                            {messagesPerField.existsError("username", "password") && (
+                                <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30">
+                                    <XCircle className="h-5 w-5 text-red-600 dark:text-red-500 flex-shrink-0 mt-0.5" />
+                                    <div
+                                        className="text-sm text-red-800 dark:text-red-200 flex-1"
+                                        aria-live="polite"
+                                        dangerouslySetInnerHTML={{
+                                            __html: messagesPerField.getFirstError("username", "password")
+                                        }}
+                                    />
+                                </div>
+                            )}
+
                             {!usernameHidden && (
                                 <div>
                                     <Label htmlFor="username" className="text-lg">
@@ -73,7 +88,9 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     <Input
                                         tabIndex={2}
                                         id="username"
-                                        className=""
+                                        className={
+                                            messagesPerField.existsError("username", "password") ? "border-red-500 focus-visible:ring-red-500" : ""
+                                        }
                                         name="username"
                                         defaultValue={login.username ?? ""}
                                         type="text"
@@ -81,16 +98,6 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         autoComplete="username"
                                         aria-invalid={messagesPerField.existsError("username", "password")}
                                     />
-                                    {messagesPerField.existsError("username", "password") && (
-                                        <div
-                                            // id="input-error"
-                                            className="input-error py-3"
-                                            aria-live="polite"
-                                            dangerouslySetInnerHTML={{
-                                                __html: messagesPerField.getFirstError("username", "password")
-                                            }}
-                                        />
-                                    )}
                                 </div>
                             )}
 
@@ -102,23 +109,17 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     <Input
                                         tabIndex={3}
                                         id="password"
-                                        className="text-foreground"
+                                        className={
+                                            messagesPerField.existsError("username", "password")
+                                                ? "text-foreground border-red-500 focus-visible:ring-red-500"
+                                                : "text-foreground"
+                                        }
                                         name="password"
                                         type="password"
                                         autoComplete="current-password"
                                         aria-invalid={messagesPerField.existsError("username", "password")}
                                     />
                                 </PasswordWrapper>
-                                {usernameHidden && messagesPerField.existsError("username", "password") && (
-                                    <span
-                                        id="input-error"
-                                        className={kcClsx("kcInputErrorMessageClass")}
-                                        aria-live="polite"
-                                        dangerouslySetInnerHTML={{
-                                            __html: messagesPerField.getFirstError("username", "password")
-                                        }}
-                                    />
-                                )}
                             </div>
 
                             <div className="space-y-2 md:space-y-0 md:flex md:justify-between text-lg ">

@@ -164,10 +164,10 @@ export function Template(props: TemplateProps<KcContext, I18n>) {
             {/* Centered Keycloak card */}
             <div className="flex flex-col items-center w-full max-w-xl px-4">
                 <div className="flex justify-center mb-6">
-                    <img src={`${url.resourcesPath}/gotrust-logo-name.svg`} alt="GoTrust" className="h-16 object-contain" />
+                    <img src={`${url.resourcesPath}/GoTrustLogo_Dark.svg`} alt="GoTrust" className="h-16 object-contain" />
                 </div>
 
-                <Card className="py-0 px-3 shadow-2xl w-full">
+                <Card className="py-0 px-3 w-full shadow-[0_10px_40px_rgba(0,0,0,0.15)]">
                     <CardContent className="space-y-8 pb-5">
                         <div className="flex justify-end space-x-4 pt-2">
                             {languageSelector()}
