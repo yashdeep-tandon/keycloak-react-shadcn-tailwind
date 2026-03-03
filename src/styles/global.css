@@ -111,10 +111,10 @@ body {
         --sidebar-accent: 240 4.8% 95.9%;
         --sidebar-accent-foreground: 240 5.9% 10%;
         --sidebar-border: 220 13% 91%;
-        --sidebar-ring: 217.2 91.2% 59.8%;
+        --sidebar-ring: 225 97% 54%;
 
-        /* Global button color */
-        --gotrust-button: 220 42% 18%;
+        /* Global button color - GoTrust Primary #1754FC */
+        --gotrust-button: 225 97% 54%;
         --gotrust-button-foreground: 0 0% 100%;
 
         --assign-icon: #000080;
@@ -133,8 +133,8 @@ body {
         --card: 0 0% 100%;
         --card-foreground: 222.2 84% 4.9%;
 
-        --primary: 222.2 47.4% 11.2%;
-        --primary-foreground: 210 40% 98%;
+        --primary: 225 97% 54%;
+        --primary-foreground: 0 0% 100%;
 
         --secondary: 210 40% 96.1%;
         --secondary-foreground: 222.2 47.4% 11.2%;
@@ -169,11 +169,11 @@ body {
 
         --radius: 0.5rem;
 
-        /* Professional blues for the onboarding flow */
-        --primary-blue: 220 42% 18%;
-        --primary-blue-hover: 220 42% 14%;
-        --accent-blue: 217 91% 60%;
-        --light-blue: 214 95% 93%;
+        /* Professional blues for the onboarding flow - GoTrust #1754FC */
+        --primary-blue: 225 97% 54%;
+        --primary-blue-hover: 225 97% 48%;
+        --accent-blue: 225 97% 62%;
+        --light-blue: 225 97% 95%;
 
         /* Status colors */
         --success: 142 71% 45%;
@@ -182,15 +182,15 @@ body {
         --warning-foreground: 0 0% 98%;
 
         /* Gradients */
-        --gradient-primary: linear-gradient(135deg, hsl(220 42% 18%), hsl(217 91% 60%));
-        --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 40% 98%));
+        --gradient-primary: linear-gradient(135deg, hsl(225 97% 54%), hsl(225 97% 62%));
+        --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(225 97% 98%));
 
         /* Shadows */
-        --shadow-sm: 0 1px 2px 0 hsl(220 42% 18% / 0.05);
-        --shadow-md: 0 4px 6px -1px hsl(220 42% 18% / 0.1),
-            0 2px 4px -2px hsl(220 42% 18% / 0.1);
-        --shadow-lg: 0 10px 15px -3px hsl(220 42% 18% / 0.1),
-            0 4px 6px -4px hsl(220 42% 18% / 0.1);
+        --shadow-sm: 0 1px 2px 0 hsl(225 97% 54% / 0.05);
+        --shadow-md: 0 4px 6px -1px hsl(225 97% 54% / 0.1),
+            0 2px 4px -2px hsl(225 97% 54% / 0.1);
+        --shadow-lg: 0 10px 15px -3px hsl(225 97% 54% / 0.1),
+            0 4px 6px -4px hsl(225 97% 54% / 0.1);
 
         /* Animated gradient background */
         --gradient-animated: linear-gradient(
@@ -202,14 +202,14 @@ body {
             hsl(0 0% 100%)
         );
 
-        /* Onboarding animated gradient - GoTrust vibrant blue */
+        /* Onboarding animated gradient - GoTrust #1754FC */
         --gradient-onboarding: linear-gradient(
             135deg,
-            hsl(220 90% 52%),
-            hsl(217 91% 60%),
-            hsl(214 95% 65%),
-            hsl(210 100% 58%),
-            hsl(217 91% 60%)
+            hsl(225 97% 50%),
+            hsl(225 97% 54%),
+            hsl(225 95% 60%),
+            hsl(225 100% 65%),
+            hsl(225 97% 58%)
         );
     }
 
@@ -255,15 +255,15 @@ body {
         /* GoTrustNxt Custom Theme Colors for Dark Mode */
         --sidebar-background: 240 5.9% 10%;
         --sidebar-foreground: 240 4.8% 95.9%;
-        --sidebar-primary: 224.3 76.3% 48%;
+        --sidebar-primary: 225 97% 54%;
         --sidebar-primary-foreground: 0 0% 100%;
         --sidebar-accent: 240 3.7% 15.9%;
         --sidebar-accent-foreground: 240 4.8% 95.9%;
         --sidebar-border: 240 3.7% 15.9%;
-        --sidebar-ring: 217.2 91.2% 59.8%;
+        --sidebar-ring: 225 97% 54%;
 
-        /* Global button color for dark mode */
-        --gotrust-button: 220 42% 18%;
+        /* Global button color for dark mode - GoTrust #1754FC */
+        --gotrust-button: 225 97% 54%;
         --gotrust-button-foreground: 0 0% 100%;
 
         --home_backgroud: linear-gradient(314deg, #424b50 14.86%, #0b101c 69.48%);
@@ -282,8 +282,8 @@ body {
         --card: 0 0% 100%;
         --card-foreground: 222.2 84% 4.9%;
 
-        --primary: #1b2741;
-        --primary-foreground: 210 40% 98%;
+        --primary: 225 97% 54%;
+        --primary-foreground: 0 0% 100%;
 
         --secondary: 210 40% 96.1%;
         --secondary-foreground: 222.2 47.4% 11.2%;
@@ -307,11 +307,11 @@ body {
 
         --radius: 0.5rem;
 
-        /* Professional blues for the onboarding flow */
-        --primary-blue: 220 42% 18%;
-        --primary-blue-hover: 220 42% 14%;
-        --accent-blue: 217 91% 60%;
-        --light-blue: 214 95% 93%;
+        /* Professional blues for the onboarding flow - GoTrust #1754FC */
+        --primary-blue: 225 97% 54%;
+        --primary-blue-hover: 225 97% 48%;
+        --accent-blue: 225 97% 62%;
+        --light-blue: 225 97% 95%;
 
         /* Status colors */
         --success: 142 71% 45%;
@@ -320,64 +320,64 @@ body {
         --warning-foreground: 0 0% 98%;
 
         /* Gradients */
-        --gradient-primary: linear-gradient(135deg, hsl(220 42% 18%), hsl(217 91% 60%));
-        --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 40% 98%));
+        --gradient-primary: linear-gradient(135deg, hsl(225 97% 54%), hsl(225 97% 62%));
+        --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(225 97% 98%));
 
         /* Shadows */
-        --shadow-sm: 0 1px 2px 0 hsl(220 42% 18% / 0.05);
-        --shadow-md: 0 4px 6px -1px hsl(220 42% 18% / 0.1),
-            0 2px 4px -2px hsl(220 42% 18% / 0.1);
-        --shadow-lg: 0 10px 15px -3px hsl(220 42% 18% / 0.1),
-            0 4px 6px -4px hsl(220 42% 18% / 0.1);
+        --shadow-sm: 0 1px 2px 0 hsl(225 97% 54% / 0.05);
+        --shadow-md: 0 4px 6px -1px hsl(225 97% 54% / 0.1),
+            0 2px 4px -2px hsl(225 97% 54% / 0.1);
+        --shadow-lg: 0 10px 15px -3px hsl(225 97% 54% / 0.1),
+            0 4px 6px -4px hsl(225 97% 54% / 0.1);
 
         /* Animated gradient background */
         --gradient-animated: linear-gradient(
             -45deg,
             hsl(0 0% 100%),
-            hsl(214 95% 98%),
-            hsl(220 42% 98%),
-            hsl(217 91% 97%),
+            hsl(225 97% 98%),
+            hsl(225 97% 96%),
+            hsl(225 97% 97%),
             hsl(0 0% 100%)
         );
 
-        /* Onboarding animated gradient - GoTrust vibrant blue */
+        /* Onboarding animated gradient - GoTrust #1754FC */
         --gradient-onboarding: linear-gradient(
             135deg,
-            hsl(220 90% 52%),
-            hsl(217 91% 60%),
-            hsl(214 95% 65%),
-            hsl(210 100% 58%),
-            hsl(217 91% 60%)
+            hsl(225 97% 50%),
+            hsl(225 97% 54%),
+            hsl(225 95% 60%),
+            hsl(225 100% 65%),
+            hsl(225 97% 58%)
         );
 
         --hover-main-btn: linear-gradient(
             314deg,
             var(--primary) 14.86%,
-            #0847f7 69.48%
+            hsl(225 97% 62%) 69.48%
         ); /* Button Hover Effect*/
         --sidebar-hover-btn: linear-gradient(
             314deg,
             var(--primary) 14.86%,
-            #0847f7 69.48%
+            hsl(225 97% 62%) 69.48%
         ); /* hover Effect and Active Effect on*/
         --home-color-gradient: linear-gradient(
             314deg,
-            #0847f7 14.86%,
+            hsl(225 97% 62%) 14.86%,
             var(--primary) 69.48%
         ); /* hover Effect on cards and home gradient*/
 
         /* GoTrustNxt Custom Theme Colors */
-        --sidebar-background: 220 42% 18%;
-        --sidebar-foreground: 215 33% 76%;
-        --sidebar-primary: 230 96% 51%;
+        --sidebar-background: 225 97% 54%;
+        --sidebar-foreground: 0 0% 100%;
+        --sidebar-primary: 225 97% 54%;
         --sidebar-primary-foreground: 0 0% 100%;
-        --sidebar-accent: 230 96% 51%;
+        --sidebar-accent: 225 97% 62%;
         --sidebar-accent-foreground: 0 0% 100%;
-        --sidebar-border: 220 42% 18%;
-        --sidebar-ring: 217.2 91.2% 59.8%;
+        --sidebar-border: 225 97% 48%;
+        --sidebar-ring: 225 97% 54%;
 
-        /* Global button color */
-        --gotrust-button: 220 42% 18%;
+        /* Global button color - GoTrust #1754FC */
+        --gotrust-button: 225 97% 54%;
         --gotrust-button-foreground: 0 0% 100%;
     }
 }

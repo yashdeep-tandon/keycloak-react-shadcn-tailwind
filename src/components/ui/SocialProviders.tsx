@@ -1,8 +1,63 @@
 import React from "react";
 import { clsx } from "keycloakify/tools/clsx";
+import {
+    FaGoogle,
+    FaMicrosoft,
+    FaFacebook,
+    FaTwitter,
+    FaLinkedin,
+    FaGithub,
+    FaStackOverflow,
+    FaGitlab,
+    FaBitbucket,
+    FaPaypal,
+    FaInstagram
+} from "react-icons/fa";
+import { SiRedhatopenshift } from "react-icons/si";
 
-// Note: Using Font Awesome icons from iconClasses for social providers
-// since Lucide React removed brand icons to avoid trademark issues
+// Helper function to get the appropriate brand icon
+const getBrandIcon = (alias: string, iconClasses?: string) => {
+    const aliasLower = alias.toLowerCase();
+    const iconSize = "1.25rem"; // h-5 w-5 equivalent
+
+    const iconMap: Record<string, JSX.Element> = {
+        google: <FaGoogle size={iconSize} />,
+        microsoft: <FaMicrosoft size={iconSize} />,
+        facebook: <FaFacebook size={iconSize} />,
+        twitter: <FaTwitter size={iconSize} />,
+        linkedin: <FaLinkedin size={iconSize} />,
+        "linkedin-openid-connect": <FaLinkedin size={iconSize} />,
+        github: <FaGithub size={iconSize} />,
+        stackoverflow: <FaStackOverflow size={iconSize} />,
+        gitlab: <FaGitlab size={iconSize} />,
+        bitbucket: <FaBitbucket size={iconSize} />,
+        paypal: <FaPaypal size={iconSize} />,
+        openshift: <SiRedhatopenshift size={iconSize} />,
+        "openshift-v3": <SiRedhatopenshift size={iconSize} />,
+        "openshift-v4": <SiRedhatopenshift size={iconSize} />,
+        instagram: <FaInstagram size={iconSize} />
+    };
+
+    // Try to match by alias first
+    if (iconMap[aliasLower]) {
+        return <div className="inline-flex items-center">{iconMap[aliasLower]}</div>;
+    }
+
+    // Try to match by checking if alias contains the provider name
+    for (const [key, icon] of Object.entries(iconMap)) {
+        if (aliasLower.includes(key)) {
+            return <div className="inline-flex items-center">{icon}</div>;
+        }
+    }
+
+    // Fallback to Font Awesome icon classes if provided
+    if (iconClasses) {
+        return <i className={clsx(iconClasses)} aria-hidden="true"></i>;
+    }
+
+    // Default fallback - no icon
+    return null;
+};
 
 export interface SocialProvidersProps {
     social: {
@@ -37,43 +92,42 @@ export const SocialProviders: React.FC<SocialProvidersProps> = ({
                 {realm.password &&
                     social.providers !== undefined &&
                     social.providers.length !== 0 && (
-                        <div id="kc-social-providers" className="mt-5 space-y-7">
-                            <h2 className="text-center text-lg mt-7">
-                                {msg("identity-provider-login-label")}
-                            </h2>
+                        <div id="kc-social-providers" className="mt-6 space-y-4">
+                            <div className="relative">
+                                <div className="absolute inset-0 flex items-center">
+                                    <div className="w-full border-t border-border"></div>
+                                </div>
+                                <div className="relative flex justify-center text-sm">
+                                    <span className="bg-background px-4 text-muted-foreground font-medium">
+                                        {msg("identity-provider-login-label")}
+                                    </span>
+                                </div>
+                            </div>
                             <div
                                 className={clsx(
-                                    "text-lg grid gap-2 grid-cols-1", // Apply a grid and gap between items
+                                    "grid gap-3", // Apply a grid and gap between items
                                     social.providers.length > 1
-                                        ? "md:grid-cols-2"
+                                        ? "grid-cols-1 md:grid-cols-2"
                                         : "grid-cols-1" // Conditional grid columns
                                 )}
                             >
                                 {social.providers.map((...[p, , providers]) => (
-                                    <div
+                                    <a
                                         key={p.alias}
-                                        className=" items-center bg-accent  w-full py-1 my-1.5 border rounded-lg px-3 hover:bg-primary hover:text-primary-foreground"
+                                        id={`social-${p.alias}`}
+                                        href={p.loginUrl}
+                                        className="group relative flex items-center justify-center gap-3 rounded-lg border border-input bg-background px-4 py-3 text-sm font-medium transition-all hover:border-primary hover:bg-primary/5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                                     >
-                                        <a
-                                            id={`social-${p.alias}`}
-                                            className="flex flex-row items-center justify-center  w-full py-2 "
-                                            type="button"
-                                            href={p.loginUrl}
-                                        >
-                                            {p.iconClasses && (
-                                                <i
-                                                    className={clsx(p.iconClasses)}
-                                                    aria-hidden="true"
-                                                ></i>
-                                            )}
-                                            <span
-                                                className="mx-3"
-                                                dangerouslySetInnerHTML={{
-                                                    __html: p.displayName
-                                                }}
-                                            ></span>
-                                        </a>
-                                    </div>
+                                        <div className="flex items-center justify-center text-muted-foreground transition-colors group-hover:text-primary">
+                                            {getBrandIcon(p.alias, p.iconClasses)}
+                                        </div>
+                                        <span
+                                            className="text-foreground transition-colors group-hover:text-primary"
+                                            dangerouslySetInnerHTML={{
+                                                __html: p.displayName
+                                            }}
+                                        ></span>
+                                    </a>
                                 ))}
                             </div>
                         </div>
