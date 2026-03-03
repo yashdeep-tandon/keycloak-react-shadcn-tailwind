@@ -1,10 +1,10 @@
-import { Fragment } from "react";
 import { getKcClsx } from "keycloakify/login/lib/kcClsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import { buttonVariants } from "../../components/ui/button";
 import { cn } from "../../lib/utils";
+import { Smartphone, Shield, Key } from "lucide-react";
 export default function LoginResetOtp(props: PageProps<Extract<KcContext, { pageId: "login-reset-otp.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
@@ -16,6 +16,14 @@ export default function LoginResetOtp(props: PageProps<Extract<KcContext, { page
     const { url, messagesPerField, configuredOtpCredentials } = kcContext;
 
     const { msg, msgStr } = i18n;
+
+    const getDeviceIcon = (index: number) => {
+        const iconClass = "h-5 w-5 text-primary";
+        // Rotate through different icons for visual variety
+        const icons = [Smartphone, Shield, Key];
+        const IconComponent = icons[index % icons.length];
+        return <IconComponent className={iconClass} />;
+    };
 
     return (
         <Template
@@ -42,10 +50,8 @@ export default function LoginResetOtp(props: PageProps<Extract<KcContext, { page
                                         defaultChecked={otpCredential.id === configuredOtpCredentials.selectedCredentialId}
                                     />
                                     <label htmlFor={`kc-otp-credential-${index}`} className="" tabIndex={index}>
-                                        <div className="flex space-x-3  text-xl">
-                                            <span className="">
-                                                <i className={kcClsx("kcLoginOTPListItemIconClass")} aria-hidden="true"></i>
-                                            </span>
+                                        <div className="flex space-x-3 text-xl items-center">
+                                            <span className="">{getDeviceIcon(index)}</span>
                                             <span className="">{otpCredential.userLabel}</span>
                                         </div>
                                     </label>

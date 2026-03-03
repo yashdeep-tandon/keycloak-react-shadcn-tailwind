@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { KcPage } from "./kc.gen";
+import { LoadingSpinner } from "./components/ui/LoadingSpinner";
 
 /*
 // The following block can be uncommented to test a specific page with `yarn dev`
@@ -19,7 +20,7 @@ createRoot(document.getElementById("root")!).render(
         {!window.kcContext ? (
             <h1>No Keycloak Context</h1>
         ) : (
-            <KcPage kcContext={window.kcContext} />
+            <KcPage kcContext={window.kcContext} fallback={<LoadingSpinner />} />
         )}
     </>
 );

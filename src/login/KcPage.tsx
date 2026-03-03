@@ -39,6 +39,7 @@ import WebauthnRegister from "./pages/WebauthnRegister";
 import LoginOauth2DeviceVerifyUserCode from "./pages/LoginOauth2DeviceVerifyUserCode";
 import LoginRecoveryAuthnCodeConfig from "./pages/LoginRecoveryAuthnCodeConfig";
 import LoginRecoveryAuthnCodeInput from "./pages/LoginRecoveryAuthnCodeInput";
+import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 const UserProfileFormFields = lazy(() => import("./UserProfileFormFields"));
 
 // Base component to render DefaultPage
@@ -71,7 +72,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
     const { i18n } = useI18n({ kcContext });
 
     return (
-        <Suspense>
+        <Suspense fallback={<LoadingSpinner />}>
             {(() => {
                 switch (kcContext.pageId) {
                     case "login-recovery-authn-code-input.ftl":

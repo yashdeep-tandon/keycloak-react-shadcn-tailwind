@@ -6,7 +6,7 @@ import type { I18n } from "../i18n";
 import { buttonVariants } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import clsx from "clsx";
-import { XCircle } from "lucide-react";
+import { XCircle, Smartphone, Shield, Key } from "lucide-react";
 
 export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "login-otp.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -19,6 +19,13 @@ export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "
     const { otpLogin, url, messagesPerField } = kcContext;
 
     const { msg, msgStr } = i18n;
+
+    const getDeviceIcon = (index: number) => {
+        const iconClass = "h-5 w-5 text-primary";
+        const icons = [Smartphone, Shield, Key];
+        const IconComponent = icons[index % icons.length];
+        return <IconComponent className={iconClass} />;
+    };
 
     return (
         <Template
@@ -63,10 +70,8 @@ export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "
                                             />
 
                                             <label htmlFor={`kc-otp-credential-${index}`} tabIndex={index} className="mx-3">
-                                                <div className="flex space-x-3  text-xl">
-                                                    <span>
-                                                        <i className={kcClsx("kcLoginOTPListItemIconClass")} aria-hidden="true"></i>
-                                                    </span>
+                                                <div className="flex space-x-3 text-xl items-center">
+                                                    <span>{getDeviceIcon(index)}</span>
                                                     <span className="">{otpCredential.userLabel}</span>
                                                 </div>
                                             </label>
